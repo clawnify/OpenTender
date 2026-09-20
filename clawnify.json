@@ -1,0 +1,48 @@
+{
+  "$schema": "https://app.clawnify.com/schema/v1/clawnify.json",
+  "version": 1,
+  "name": "OpenTender",
+  "description": "Bid/no-bid on a public tender, before anyone writes a word of the bid. Upload the pack, load the jurisdiction's standard selection questions as a checklist, and let your agent read the documents against what your company can actually evidence. Every answer must carry a quote the app can find in the source, so a requirement is only cleared on evidence you can click through to. You get a verdict with the one requirement that decided it, the deadlines that are still open, and an honest list of what nobody has settled yet.",
+  "icon": "icon.svg",
+  "tags": ["tenders", "procurement", "public-sector", "bid-management", "rfp", "qualification"],
+
+  "app": {
+    "framework": "react+hono",
+    "database": true,
+    "storage": true
+  },
+
+  "env": {
+    "optional": ["OPENROUTER_API_KEY"]
+  },
+
+  "deploy": {
+    "title": "Deploy your OpenTender",
+    "subtitle": "Know whether you can bid, on evidence, before the deadline decides for you.",
+    "prompts": [
+      {
+        "key": "company_name",
+        "label": "Company name",
+        "placeholder": "e.g. Northwind Services Ltd",
+        "required": true
+      },
+      {
+        "key": "what_you_supply",
+        "label": "What do you bid for?",
+        "placeholder": "e.g. managed IT support and network installation for local authorities"
+      },
+      {
+        "key": "annual_turnover",
+        "label": "Last filed annual turnover",
+        "placeholder": "e.g. GBP 1.8m"
+      },
+      {
+        "key": "certifications",
+        "label": "Certifications and insurance you hold",
+        "placeholder": "e.g. Cyber Essentials Plus, ISO 9001, GBP 10m employers' liability"
+      }
+    ]
+  },
+
+  "agent": "agent.md"
+}

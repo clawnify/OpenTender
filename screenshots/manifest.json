@@ -1,0 +1,78 @@
+{
+  "app": "OpenTender",
+  "captured": "2026-09-20",
+  "source_revision": "initial import, pre-first-commit",
+  "note": "Only the two README cover sources are kept. Feature illustrations are recreated in scripts/previews.mjs and reference app source rather than screenshots, so no gallery of section captures is retained.",
+  "capture": {
+    "tool": "TaskWindow emulated window",
+    "viewport": { "width": 1600, "height": 1000 },
+    "data": "demo/seed.mjs against a local dev database",
+    "theme_switch": "html[data-theme] override in src/client/styles.css; the dark shot is the app's own dark tokens, not a recolour"
+  },
+  "screenshots": [
+    {
+      "id": "tender-verdict-light",
+      "file": "tender-verdict-light.png",
+      "route": "/tenders/:id",
+      "theme": "light",
+      "width": 1600,
+      "height": 1000,
+      "alt": "OpenTender tender screen: a no-go verdict naming Cyber Essentials certification, with per-family progress and both deadlines"
+    },
+    {
+      "id": "tender-verdict-dark",
+      "file": "tender-verdict-dark.png",
+      "route": "/tenders/:id",
+      "theme": "dark",
+      "width": 1600,
+      "height": 1000,
+      "alt": "OpenTender tender screen in dark theme: a no-go verdict naming Cyber Essentials certification, with per-family progress and both deadlines"
+    }
+  ],
+  "cover": {
+    "light": { "source": "tender-verdict-light", "output": "../readme-banner.png", "width": 2560, "height": 1600 },
+    "dark": { "source": "tender-verdict-dark", "output": "../readme-banner-dark.png", "width": 2560, "height": 1600 }
+  },
+  "previews": [
+    {
+      "id": "verdict",
+      "output": "../previews/verdict.png",
+      "width": 1600,
+      "height": 1000,
+      "references": ["src/server/verdict.ts", "src/client/components/verdict.tsx", "src/client/routes/tender.tsx"],
+      "interaction": "none, it is a read-out",
+      "caption": "The bid/no-bid call",
+      "alt": "Conceptual illustration of OpenTender's verdict: a no-go card with per-family progress, and a second card naming the requirement that decided it"
+    },
+    {
+      "id": "citation",
+      "output": "../previews/citation.png",
+      "width": 1600,
+      "height": 1000,
+      "references": ["src/server/citations.ts", "src/server/index.ts"],
+      "interaction": "none",
+      "caption": "Evidence, not assertion",
+      "alt": "Conceptual illustration of a verified citation: a met requirement with its quote, and the source document card showing that sentence highlighted"
+    },
+    {
+      "id": "double-check",
+      "output": "../previews/double-check.png",
+      "width": 1600,
+      "height": 1000,
+      "references": ["src/server/decisions.ts", "src/server/index.ts"],
+      "interaction": "click, on the pressed Double-check control",
+      "caption": "The second read",
+      "alt": "Conceptual illustration of the double-check: a pressed control floating over its result, where one requirement cleared as not asked for has come back as unresolved with the page that imposes it"
+    },
+    {
+      "id": "profile",
+      "output": "../previews/profile.png",
+      "width": 1600,
+      "height": 1000,
+      "references": ["src/client/routes/profile.tsx", "src/server/schema.sql"],
+      "interaction": "text edit, caret in the focused value field",
+      "caption": "Answered once, reused every time",
+      "alt": "Conceptual illustration of the capability profile: an insurance value being typed into a focused field, with a second card showing the tender requirements it satisfies"
+    }
+  ]
+}

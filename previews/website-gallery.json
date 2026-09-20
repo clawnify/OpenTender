@@ -1,0 +1,35 @@
+{
+  "app": "OpenTender",
+  "generated": "2026-09-20",
+  "note": "Conceptual UI illustrations with fictional example data. Display whole with object-fit: contain; do not apply README-banner crop offsets.",
+  "images": [
+    {
+      "src": "previews/verdict.png",
+      "width": 1600,
+      "height": 1000,
+      "caption": "The bid/no-bid call",
+      "alt": "Conceptual illustration of OpenTender's verdict: a no-go card with per-family progress, and a second card naming the requirement that decided it"
+    },
+    {
+      "src": "previews/citation.png",
+      "width": 1600,
+      "height": 1000,
+      "caption": "Evidence, not assertion",
+      "alt": "Conceptual illustration of a verified citation: a met requirement with its quote, and the source document card showing that sentence highlighted"
+    },
+    {
+      "src": "previews/double-check.png",
+      "width": 1600,
+      "height": 1000,
+      "caption": "The second read",
+      "alt": "Conceptual illustration of the double-check: a pressed control floating over its result, where one requirement cleared as not asked for has come back as unresolved with the page that imposes it"
+    },
+    {
+      "src": "previews/profile.png",
+      "width": 1600,
+      "height": 1000,
+      "caption": "Answered once, reused every time",
+      "alt": "Conceptual illustration of the capability profile: an insurance value being typed into a focused field, with a second card showing the tender requirements it satisfies"
+    }
+  ]
+}

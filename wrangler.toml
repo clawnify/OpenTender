@@ -1,0 +1,23 @@
+name = "open-tender"
+main = "src/server/index.ts"
+compatibility_date = "2026-04-15"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+# Run the Worker first for API routes so the SPA fallback can't intercept them:
+# a navigation GET to /api/documents/{id}/file would otherwise be served
+# index.html and the PDF viewer would render the app inside itself.
+# /llms.txt is the agent discovery index served by createApp, same deal.
+run_worker_first = ["/api/*", "/llms.txt"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "open-tender-db"
+database_id = "local"
+
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "open-tender-uploads"

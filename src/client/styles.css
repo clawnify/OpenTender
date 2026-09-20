@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+/* The token layer. Every colour, radius and elevation in the app resolves
+   through here, so rebranding is this file and nothing else. Components never
+   carry a hex, a font name or a raw pixel value.
+
+   @theme maps Tailwind's colour names onto plain custom properties, and the
+   properties are redefined inside the dark media query below. The @theme block
+   itself is never nested in a media query: Tailwind hoists and merges every
+   @theme, dropping the condition, so a dark block written that way wins for
+   everyone and the app silently ships dark. */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-link: var(--link);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-text: var(--accent-text);
+  --color-on-accent: var(--on-accent);
+
+  --color-info: var(--info);
+  --color-info-tint: var(--info-tint);
+  --color-info-solid: var(--info-solid);
+  --color-success: var(--success);
+  --color-success-tint: var(--success-tint);
+  --color-success-solid: var(--success-solid);
+  --color-warning: var(--warning);
+  --color-warning-tint: var(--warning-tint);
+  --color-warning-solid: var(--warning-solid);
+  --color-danger: var(--danger);
+  --color-danger-tint: var(--danger-tint);
+  --color-danger-solid: var(--danger-solid);
+
+  /* 4px chips, 8px controls, 12px cards and tiles, 16px modals, 24px hero. */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+/* Warm neutrals at hue 85, never blue-gray: a slate canvas reads cold and
+   generic. Chromatic values are OKLCH triples where lightness and chroma come
+   from the role and only the hue carries the meaning, which is what lets every
+   tint/text pair pass contrast without hand-tuning. */
+:root {
+  --background: #ffffff;
+  --surface: #ffffff;
+  --sunken: #f7f7f5;
+  --foreground: #1b1a19;
+  --muted: #646360;
+  --faint: #9a9893;
+  --border: #e5e3de;
+  --ring: #df3656;
+  --link: #1b1a19; /* links are ink; the underline is the affordance, never a blue */
+
+  --primary: #1b1a19; /* the one solid ink action per screen */
+  --primary-hover: #333130;
+  --on-primary: #ffffff;
+
+  --accent: #df3656; /* app icon, count badges, focus ring. Nowhere else */
+  --accent-hover: #bd2c47;
+  --accent-tint: #f9eded;
+  --accent-text: #892f3b;
+  --on-accent: #ffffff;
+
+  --info: #173ec4;
+  --info-tint: #ecf0f9;
+  --info-solid: #4977ed;
+  --success: #2b5f3c;
+  --success-tint: #dbf9e2;
+  --success-solid: #319656;
+  --warning: #664e27;
+  --warning-tint: #f9efdf;
+  --warning-solid: #a3772b;
+  --danger: #8a2f2d;
+  --danger-tint: #f9edec;
+  --danger-solid: #e1363a;
+
+  --shadow-edge: inset 0 0 0 1px var(--border);
+  --shadow-raised: 0 0 2px rgba(28, 40, 64, 0.18), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-float: 0 0 0 1px rgba(28, 40, 64, 0.04), 0 4px 8px -4px rgba(28, 40, 64, 0.12),
+    0 4px 12px -2px rgba(24, 41, 75, 0.16);
+}
+
+/* The dark palette, defined once and applied twice below.
+ *
+ * Two selectors need these values: the OS preference, and an explicit
+ * `data-theme` on <html> for anyone whose machine says light while they want
+ * dark. Repeating thirty colours under both is how the two drift apart and one
+ * theme quietly ships wrong, so the values live here and the rules below only
+ * alias them. */
+:root {
+  --d-background: #100f0e;
+  --d-surface: #161615;
+  --d-sunken: #222120;
+  --d-foreground: #efeeed;
+  --d-muted: #c0bdb9;
+  --d-faint: #82807c;
+  --d-border: #2e2e2c;
+  --d-ring: #e4415d;
+  --d-link: #efeeed;
+  --d-primary: #efeeed; /* the solid ink button inverts to a light one */
+  --d-primary-hover: #d6d4d1;
+  --d-on-primary: #100f0e;
+  --d-accent: #e4415d;
+  --d-accent-hover: #ef7d87;
+  --d-accent-tint: #3b1c1e;
+  --d-accent-text: #e6b6b8;
+  --d-on-accent: #ffffff;
+  --d-info: #b5c4e5;
+  --d-info-tint: #12234f;
+  --d-info-solid: #5580e8;
+  --d-success: #86da9e;
+  --d-success-tint: #1a2b1f;
+  --d-success-solid: #3c9c5d;
+  --d-warning: #e5bd7e;
+  --d-warning-tint: #2d2518;
+  --d-warning-solid: #a87e35;
+  --d-danger: #e6b7b2;
+  --d-danger-tint: #3b1c1a;
+  --d-danger-solid: #e64243;
+}
+
+/* On a dark canvas the drops disappear and the ring carries every level;
+   the background/surface/sunken ladder does the rest of the work. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: var(--d-background);
+    --surface: var(--d-surface);
+    --sunken: var(--d-sunken);
+    --foreground: var(--d-foreground);
+    --muted: var(--d-muted);
+    --faint: var(--d-faint);
+    --border: var(--d-border);
+    --ring: var(--d-ring);
+    --link: var(--d-link);
+    --primary: var(--d-primary);
+    --primary-hover: var(--d-primary-hover);
+    --on-primary: var(--d-on-primary);
+    --accent: var(--d-accent);
+    --accent-hover: var(--d-accent-hover);
+    --accent-tint: var(--d-accent-tint);
+    --accent-text: var(--d-accent-text);
+    --on-accent: var(--d-on-accent);
+    --info: var(--d-info);
+    --info-tint: var(--d-info-tint);
+    --info-solid: var(--d-info-solid);
+    --success: var(--d-success);
+    --success-tint: var(--d-success-tint);
+    --success-solid: var(--d-success-solid);
+    --warning: var(--d-warning);
+    --warning-tint: var(--d-warning-tint);
+    --warning-solid: var(--d-warning-solid);
+    --danger: var(--d-danger);
+    --danger-tint: var(--d-danger-tint);
+    --danger-solid: var(--d-danger-solid);
+    --shadow-raised: inset 0 0 0 1px var(--border);
+    --shadow-float: inset 0 0 0 1px var(--border);
+  }
+}
+
+:root[data-theme="dark"] {
+  --background: var(--d-background);
+  --surface: var(--d-surface);
+  --sunken: var(--d-sunken);
+  --foreground: var(--d-foreground);
+  --muted: var(--d-muted);
+  --faint: var(--d-faint);
+  --border: var(--d-border);
+  --ring: var(--d-ring);
+  --link: var(--d-link);
+  --primary: var(--d-primary);
+  --primary-hover: var(--d-primary-hover);
+  --on-primary: var(--d-on-primary);
+  --accent: var(--d-accent);
+  --accent-hover: var(--d-accent-hover);
+  --accent-tint: var(--d-accent-tint);
+  --accent-text: var(--d-accent-text);
+  --on-accent: var(--d-on-accent);
+  --info: var(--d-info);
+  --info-tint: var(--d-info-tint);
+  --info-solid: var(--d-info-solid);
+  --success: var(--d-success);
+  --success-tint: var(--d-success-tint);
+  --success-solid: var(--d-success-solid);
+  --warning: var(--d-warning);
+  --warning-tint: var(--d-warning-tint);
+  --warning-solid: var(--d-warning-solid);
+  --danger: var(--d-danger);
+  --danger-tint: var(--d-danger-tint);
+  --danger-solid: var(--d-danger-solid);
+  --shadow-raised: inset 0 0 0 1px var(--border);
+  --shadow-float: inset 0 0 0 1px var(--border);
+}
+
+@layer base {
+  html {
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-size: 0.9375rem; /* 15px: this tier has room, one step above the dense-tool default */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  /* iOS zooms any input under 16px on focus, which throws the layout off the
+     screen mid-edit. Only on phones, so the 15px scale survives on desktop. */
+  @media (max-width: 767px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  }
+}
+
+@layer base {
+  a.link,
+  .link {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  a.link:hover,
+  .link:hover {
+    text-decoration-color: var(--foreground);
+  }
+}
+
+@layer components {
+  /* Three elevation recipes, and the difference between resting and floating is
+     which recipe, not shadow-versus-border. The edge is always a box-shadow:
+     an inset ring costs no layout, keeps the radius exact, and composes with a
+     drop in the same property. */
+  .shadow-edge {
+    box-shadow: var(--shadow-edge);
+  }
+  .shadow-raised {
+    box-shadow: var(--shadow-raised);
+  }
+  .shadow-float {
+    box-shadow: var(--shadow-float);
+  }
+
+  /* Numbers are instrumentation: tabular figures so digits and totals stack. */
+  .data {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* The one sanctioned uppercase in the system: the label above a KPI number.
+     Everything else, including card titles and column headers, is sentence
+     case. An interface covered in small caps reads as a control panel. */
+  .stat-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Agent mode: every interactive target grows to 44px and hover-only
+     affordances become permanent, because a browser-driving agent has no
+     hover. */
+  [data-agent] button,
+  [data-agent] a[role="button"],
+  [data-agent] input,
+  [data-agent] select {
+    min-height: 2.75rem;
+  }
+}

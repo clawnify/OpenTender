@@ -1,0 +1,174 @@
+{
+  "packs": [
+    {
+      "id": "uk-sq-ppn-0324",
+      "name": "UK Standard Selection Questionnaire",
+      "description": "The Cabinet Office standard selection questions, as a bid/no-bid checklist. Part 2 exclusion grounds and Part 3 selection criteria, plus the two conditions UK buyers add most often. Start here and delete what the tender does not ask for.",
+      "jurisdiction": "United Kingdom",
+      "provenance": {
+        "source_url": "https://www.gov.uk/government/publications/ppn-0324-standard-selection-questionnaire-sq/annex-b-standard-selection-questions-html",
+        "document": "PPN 03/24: Standard Selection Questionnaire (SQ), Annex B - Standard Selection Questions",
+        "publisher": "Cabinet Office",
+        "published": "2024-03-27",
+        "retrieved": "2026-09-20",
+        "licence": "Open Government Licence v3.0",
+        "note": "Annex B is written for procurements under the Public Contracts Regulations 2015. A buyer running under the Procurement Act 2023 sets conditions of participation, which cover the same ground but are worded by the buyer rather than standardised. Treat every row here as a prompt to check the tender, never as the tender's own wording."
+      },
+      "requirements": [
+        {
+          "key": "exclusion_convictions",
+          "label": "No mandatory exclusion grounds",
+          "family": "legal",
+          "obligation": "mandatory",
+          "source": "Annex B Part 2",
+          "hint": "Convictions in the last five years, anywhere in the world, for any Annex D offence (criminal organisation, corruption, fraud, terrorism, money laundering, child labour or trafficking), for the supplier or anyone with powers of representation, decision or control.",
+          "capability_key": "exclusion_grounds_clear"
+        },
+        {
+          "key": "exclusion_tax",
+          "label": "Taxes and social security paid",
+          "family": "legal",
+          "obligation": "mandatory",
+          "source": "Annex B Part 2",
+          "hint": "Any breach of obligations to pay tax or social security contributions, and whether it was established by a binding judicial or administrative decision.",
+          "capability_key": "tax_compliance"
+        },
+        {
+          "key": "exclusion_discretionary",
+          "label": "No discretionary exclusion grounds",
+          "family": "legal",
+          "obligation": "mandatory",
+          "source": "Annex B Part 2",
+          "hint": "Bankruptcy or insolvency, grave professional misconduct, distortion of competition, conflict of interest, prior poor performance, misrepresentation, and breaches of environmental, social or labour law.",
+          "capability_key": "discretionary_grounds_clear"
+        },
+        {
+          "key": "professional_register",
+          "label": "Registered on the required professional or trade register",
+          "family": "professional",
+          "obligation": "mandatory",
+          "source": "Annex B Part 1",
+          "hint": "Which register the tender names, and our registration number on it.",
+          "capability_key": "professional_register"
+        },
+        {
+          "key": "services_authorisation",
+          "label": "Authorisation or membership required to provide the service",
+          "family": "professional",
+          "obligation": "mandatory",
+          "source": "Annex B Part 1",
+          "hint": "Services only. Whether the law of the country of establishment requires a particular authorisation or membership of a particular organisation to provide what is specified.",
+          "capability_key": "service_authorisation"
+        },
+        {
+          "key": "economic_minimum",
+          "label": "Minimum economic and financial standing",
+          "family": "economic",
+          "obligation": "mandatory",
+          "source": "Annex B Part 3",
+          "hint": "The minimum level of economic and financial standing or financial threshold stated in the evaluation criteria. Usually a minimum annual turnover, often a multiple of the contract value. Record the exact figure and the period it applies to.",
+          "capability_key": "annual_turnover"
+        },
+        {
+          "key": "accounts_two_years",
+          "label": "Two years of accounts available",
+          "family": "economic",
+          "obligation": "mandatory",
+          "source": "Annex B Part 3",
+          "hint": "Detailed accounts for the last two years, audited where the law requires it, or the electronic reference to them at Companies House. New organisations should note the alternative evidence route the SQ allows.",
+          "capability_key": "filed_accounts"
+        },
+        {
+          "key": "insurance_employers_liability",
+          "label": "Employer's liability insurance",
+          "family": "economic",
+          "obligation": "mandatory",
+          "source": "Annex B Part 3",
+          "hint": "The level the tender states. Certain employers are legally required to hold at least GBP 5 million. Cover can be committed to before contract commencement rather than held today, so record which of the two we are relying on.",
+          "capability_key": "insurance_employers_liability"
+        },
+        {
+          "key": "insurance_public_liability",
+          "label": "Public liability insurance",
+          "family": "economic",
+          "obligation": "mandatory",
+          "source": "Annex B Part 3",
+          "hint": "The level the tender states.",
+          "capability_key": "insurance_public_liability"
+        },
+        {
+          "key": "insurance_professional_indemnity",
+          "label": "Professional indemnity insurance",
+          "family": "economic",
+          "obligation": "mandatory",
+          "source": "Annex B Part 3",
+          "hint": "The level the tender states. Frequently the one a small supplier does not already hold at the level demanded.",
+          "capability_key": "insurance_professional_indemnity"
+        },
+        {
+          "key": "insurance_product_liability",
+          "label": "Product liability insurance",
+          "family": "economic",
+          "obligation": "optional",
+          "source": "Annex B Part 3",
+          "hint": "Supplies contracts. The level the tender states, where it states one.",
+          "capability_key": "insurance_product_liability"
+        },
+        {
+          "key": "contract_examples",
+          "label": "Relevant contract examples",
+          "family": "technical",
+          "obligation": "mandatory",
+          "source": "Annex B Part 3",
+          "hint": "Up to three contracts relevant to the requirement, public or private, from the last three years for supplies and services or five years for works. Record how many the tender demands, how recent they must be, and how close in scope and value. This is the row a bid most often fails on quietly.",
+          "capability_key": "contract_examples"
+        },
+        {
+          "key": "health_and_safety",
+          "label": "Health and safety arrangements",
+          "family": "technical",
+          "obligation": "mandatory",
+          "source": "Annex B Part 3",
+          "hint": "Arrangements to manage health and safety and control significant risks, including risks from contractors. Works tenders may also ask for health and safety breaches in the last five years.",
+          "capability_key": "health_and_safety_policy"
+        },
+        {
+          "key": "data_protection",
+          "label": "UK GDPR capability",
+          "family": "legal",
+          "obligation": "mandatory",
+          "source": "Annex B Part 3",
+          "hint": "Human and technical resources in place, or in place by contract award, to comply with UK data protection law and protect the rights of data subjects.",
+          "capability_key": "data_protection"
+        },
+        {
+          "key": "prompt_payment",
+          "label": "Prompt payment in the supply chain",
+          "family": "legal",
+          "obligation": "optional",
+          "source": "Annex B Part 3",
+          "hint": "Only where a supply chain is used. Systems to pay promptly, procedures for disputed invoices, 30-day terms passed down the chain, and for central government contracts over GBP 5m per annum the payment performance percentages for the last two six-month periods.",
+          "capability_key": "prompt_payment"
+        },
+        {
+          "key": "cyber_essentials",
+          "label": "Cyber Essentials certification",
+          "family": "technical",
+          "obligation": "mandatory",
+          "source": "buyer-specific",
+          "hint": "NOT part of Annex B. Commonly required by UK buyers where the contract handles their data, sometimes at Cyber Essentials Plus. Check the ITT for which level, and whether it is required at bid or at award. Delete this row if the tender does not ask for it.",
+          "capability_key": "cyber_essentials"
+        },
+        {
+          "key": "social_value",
+          "label": "Social value",
+          "family": "social_value",
+          "obligation": "scored",
+          "source": "buyer-specific",
+          "hint": "NOT part of Annex B, and scored rather than pass/fail. Central government applies a minimum weighting under the Social Value Model; other buyers set their own. Record the weighting and the themes the tender names, because they decide what the response has to cover.",
+          "capability_key": "social_value"
+        }
+      ]
+    }
+  ]
+}
