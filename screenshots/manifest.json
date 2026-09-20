@@ -69,7 +69,7 @@
       "output": "../previews/profile.png",
       "width": 1600,
       "height": 1000,
-      "references": ["src/client/routes/profile.tsx", "src/server/schema.sql"],
+      "references": ["src/client/routes/profile.tsx", "schema.sql"],
       "interaction": "text edit, caret in the focused value field",
       "caption": "Answered once, reused every time",
       "alt": "Conceptual illustration of the capability profile: an insurance value being typed into a focused field, with a second card showing the tender requirements it satisfies"

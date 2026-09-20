@@ -33,7 +33,7 @@
 // this safe to run from any region; widen the state to include our own side of
 // the answer and that stops being true.
 
-/** Pinned. The threshold below is calibrated against this build; the alias moves. */
+/** Pinned. The alias moves, and any number tuned below is tuned against this build. */
 export const JEV_MODEL = "typesafe/jev-1.13";
 
 const DECISIONS_URL = "https://openrouter.ai/api/alpha/decisions";
@@ -41,18 +41,32 @@ const DECISIONS_URL = "https://openrouter.ai/api/alpha/decisions";
 /**
  * Flag only when the model is near-certain.
  *
- * Measured answers on real tender clauses are polarised (0.99 for the
- * requirement a clause states, 0.03 for one it does not), so this sits in the
- * empty middle rather than where answers cluster. Raising it loses real
- * catches; lowering it fills the unresolved list with rows a human then has to
- * clear by hand, which is the failure that makes people stop using the check.
+ * A starting point, not a calibration. It was chosen after four answers on one
+ * document, which came back at 0.99 and 0.98 for requirements the text does
+ * impose and 0.03 and below for ones it does not, so 0.85 sits in the gap
+ * those four left rather than where answers were seen to cluster. Four is not
+ * a corpus. Treat this number as provisional until it has been run against a
+ * real set of packs with known answers.
+ *
+ * Which way to be wrong is not symmetric, and that is what set the direction.
+ * The published weakness of this model class is precision, and every false
+ * flag here is a cleared row a human has to re-read, so the threshold is high
+ * on purpose: it loses real catches rather than filling the unresolved list
+ * with noise, because a noisy check is one people switch off.
  */
 export const IMPOSED_THRESHOLD = 0.85;
 
 /** How many pages one sweep will read. A long pack costs one call per page. */
 export const MAX_PAGES_PER_SWEEP = 400;
 
-/** Pages read at once. Well under the published rate limits, and plenty. */
+/**
+ * Pages read at once.
+ *
+ * Six because that is the platform ceiling, not because it was tuned: a Worker
+ * may have at most six connections simultaneously waiting for response
+ * headers. Raising this does not go faster, it queues, so the number is a
+ * limit being respected rather than a knob.
+ */
 const CONCURRENCY = 6;
 
 export interface DecisionsEnv {

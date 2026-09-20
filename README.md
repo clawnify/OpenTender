@@ -94,7 +94,7 @@ pnpm deploy
   colour and radius resolves through it, so rebranding is that one file.
 - **API**: a Hono app in `src/server/index.ts`, self-describing at
   `/api/openapi.json` and `/llms.txt`.
-- **Storage**: a SQLite database per deployment (`src/server/schema.sql`), and
+- **Storage**: a SQLite database per deployment (`schema.sql`), and
   object storage for the original files.
 - **The parts worth reading**: `src/server/citations.ts` is the quote check,
   `src/server/verdict.ts` is the bid/no-bid rule, and `src/server/decisions.ts`
