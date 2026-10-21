@@ -1,7 +1,7 @@
 {
   "$schema": "https://app.clawnify.com/schema/v1/clawnify.json",
   "version": 1,
-  "name": "OpenTender",
+  "name": "Tenders",
   "description": "Bid/no-bid on a public tender, before anyone writes a word of the bid. Upload the pack, load the jurisdiction's standard selection questions as a checklist, and let your agent read the documents against what your company can actually evidence. Every answer must carry a quote the app can find in the source, so a requirement is only cleared on evidence you can click through to. You get a verdict with the one requirement that decided it, the deadlines that are still open, and an honest list of what nobody has settled yet.",
   "icon": "icon.svg",
   "tags": ["tenders", "procurement", "public-sector", "bid-management", "rfp", "qualification"],
@@ -17,7 +17,6 @@
   },
 
   "deploy": {
-    "title": "Deploy your OpenTender",
     "subtitle": "Know whether you can bid, on evidence, before the deadline decides for you.",
     "prompts": [
       {
